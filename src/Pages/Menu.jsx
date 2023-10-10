@@ -5,7 +5,7 @@ export default function Menu() {
     return (
         <Container>
             <p>Linkr</p>
-            <img />
+            <img src=""/>
         </Container>
     )
 }
