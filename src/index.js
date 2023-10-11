@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import ResetStyle from './Style/ResetStyle';
-import GlobalStyle from './Style/GlobalStyle'
+import ResetStyle from './styles/ResetStyle';
+import GlobalStyle from './styles/GlobalStyle'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
