@@ -1,24 +1,58 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 
 export default function Menu() {
-    return (
-        <Container>
-            <p>Linkr</p>
-            <img src=""/>
-        </Container>
-    )
+
+    const [status, setStatus] = useState("disabled")
+
+    function Logout(i) {
+
+        i === 1 ? setStatus("click") : setStatus("disabled")
+
+    }
+    if (status === "disabled") {
+        return (
+            <Container>
+                <p>Linkr</p>
+
+                <div>
+                    <ion-icon onClick={() => Logout(1)} name="chevron-down-outline"></ion-icon>
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                </div>
+
+            </Container>
+        )
+    } else {
+
+        return (
+            <Container>
+                <p>Linkr</p>
+
+                <div>
+                    <ion-icon onClick={() => Logout(2)} name="chevron-up-outline"></ion-icon>
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                </div>
+                <button> Logout</button>
+            </Container>
+        )
+    }
 }
 
 const Container = styled.div`
     display: flex;
 
+    width: 100%;
     height: 72px;
     background: #151515;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
 
     align-items: center;
     justify-content: space-between;
     
+    position: fixed;
+    z-index: 1;
+
     p{  
         display: flex;
         
@@ -33,12 +67,44 @@ const Container = styled.div`
     }
 
     img{
-        width: 43px;
-        height: 43px;
+        width: 53px;
+        height: 53px;
 
         border-radius: 26.5px;
 
         margin-right: 35px;
+    }
+
+    ion-icon{
+        
+        color: #FFFFFF;
+        width: 40px;
+        height: 30px;
+       
+        margin: 10px;
+    }
+
+    button{
+        position: fixed;
+        top: 72px;
+        right: 0px;
+
+        width: 150px;
+        height: 47px;
+
+        border-radius:0px, 0px, 20px, 20px;
+        border: 1px solid #171717;
+
+        background-color: #171717;
+
+        color: #FFFFFF;
+        font-family: 'Lato';
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.05em;
+        
+
     }
 
 `
