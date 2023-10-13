@@ -18,7 +18,7 @@ export default function Home() {
          }
      } 
 
-        axios.get(`${import.meta.env.VITE_API_URL}/home`)
+        axios.get(`${import.meta.env.VITE_API_URL}/timeline`)
 
             .then((res) => {
                 setTwittes(res.data)

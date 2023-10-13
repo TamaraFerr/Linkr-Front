@@ -13,14 +13,14 @@ export default function InputPost() {
     function createPost(e) {
         e.preventDefault()
 
-        /* 
+
         const config = {
             headers: {
-                Authorization: `Bearer ${token.token}`
+                Authorization: `Bearer ${"d86b3d0f-3cc1-4c3b-86e2-87832c4ec416"}`
             }
-        } */
-        
-        axios.post(`${import.meta.env.VITE_API_URL}/home`, form)
+        }
+
+        axios.post(`${import.meta.env.VITE_API_URL}/timeline`, form)
             .then(() => {
 
                 navigate("/home")
