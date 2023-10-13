@@ -5,7 +5,7 @@ export default function Twittes() {
     return (
         <CardTwitte>
             <div className="likeCount">
-                <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
                 <ion-icon name="heart-outline"></ion-icon>
             </div>
             <div className="text">

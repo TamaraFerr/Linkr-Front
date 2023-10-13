@@ -18,7 +18,7 @@ export default function Menu() {
 
                 <div>
                     <ion-icon onClick={() => Logout(1)} name="chevron-down-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
                 </div>
 
             </Container>
@@ -31,7 +31,7 @@ export default function Menu() {
 
                 <div>
                     <ion-icon onClick={() => Logout(2)} name="chevron-up-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
                 </div>
                 <button> Logout</button>
             </Container>
