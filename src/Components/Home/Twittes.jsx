@@ -2,10 +2,12 @@ import styled from "styled-components"
 
 
 export default function Twittes() {
+
+      //embeded link, embeded bookmark,custom embeded link
     return (
         <CardTwitte>
             <div className="likeCount">
-                <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                 <ion-icon name="heart-outline"></ion-icon>
             </div>
             <div className="text">
@@ -13,7 +15,10 @@ export default function Twittes() {
                 <p>Muito maneiro esse tutorial de Material UI com React, deem uma olhada!</p>
 
                 <CardUrl>
-
+                <p>
+                <a href="https://www.driven.com.br/"></a>
+          
+                </p>
                 </CardUrl>
             </div>
         </CardTwitte>

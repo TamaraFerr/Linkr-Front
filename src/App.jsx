@@ -12,7 +12,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={""} />
           <Route path="/signup" element={""} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/timeline" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider >

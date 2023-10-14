@@ -20,7 +20,7 @@ export default function InputPost() {
             }
         }
 
-        axios.post(`${import.meta.env.VITE_API_URL}/timeline`, form)
+        axios.post(`${import.meta.env.REACT_APP_API_URL}/timeline`, config, form)
             .then(() => {
 
                 navigate("/home")

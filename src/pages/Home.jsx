@@ -1,13 +1,12 @@
 import styled from "styled-components"
 import Menu from "./Menu.jsx"
 import InputPost from "../Components/Home/InputPost.jsx"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useEffect } from "react"
 import Twittes from "../Components/Home/Twittes.jsx"
 
 export default function Home() {
 
-    const [twittes, setTwittes] = useState()
+    //const [twittes, setTwittes] = useState()
 
     useEffect(() => {
 
@@ -18,7 +17,7 @@ export default function Home() {
          }
      } 
 
-        axios.get(`${import.meta.env.VITE_API_URL}/timeline`)
+        axios.get(`${import.meta.env.REACT_APP_API_URL}/timeline`)
 
             .then((res) => {
                 setTwittes(res.data)
@@ -39,7 +38,7 @@ export default function Home() {
                 <p className="title">TimeLine</p>
 
                 <CreatePost>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" />
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                     <InputPost />
                 </CreatePost>
 
