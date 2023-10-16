@@ -39,6 +39,7 @@ export default function InputPost() {
                     type="url"
                     value={form.url}
                     onChange={(e) => setForm({ ...form, url: e.target.value })}
+                    data-test="link"
                     required
 
                 />
@@ -46,10 +47,11 @@ export default function InputPost() {
                     type="text"
                     value={form.description}
                     onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    data-test="description"
                     required
                     className="text"
                 />
-                <button type="submit">Publish</button>
+                <button type="submit"  data-test="publish-btn">Publish</button>
             </form>
 
         </Container>

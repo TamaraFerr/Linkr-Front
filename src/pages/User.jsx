@@ -12,7 +12,8 @@ export default function UserPosts() {
     const [user, setUser] = useState()
     const { id } = useParams()
 
-    const token = "9d9cd882-ecbb-4849-a1e9-2940e6c20ada"
+    const hashtags = ['React', 'Javascript', 'Webdevelopment', 'Coding', 'Alura', 'Ariven', 'Ruby on Rails', 'Developer'];
+    const token = "a46ef563-3254-4f43-861f-d5c52f894084"
     useEffect(() => {
 
         const config = {
@@ -24,6 +25,7 @@ export default function UserPosts() {
         axios.get(`${process.env.REACT_APP_API_URL}/user/:${id}`, config)
 
             .then((res) => {
+                console.log(res.data)
                 setUser(res.data)
             })
             .catch((err) => {
@@ -45,14 +47,17 @@ export default function UserPosts() {
 
                 {user && user.map((u) =>
                     <Twittes
+                        name={u.username}
+                        photo={u.photo}
                         link={u.link}
                         description={u.description}
+                        likes={u.likes}
                     />
                 )}
 
             </div>
 
-            <Hashtags />
+            <Hashtags hashtags={hashtags}/>
         </Container>
     )
 }

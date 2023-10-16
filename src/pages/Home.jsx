@@ -11,6 +11,7 @@ export default function Home() {
     const hashtags = ['React', 'Javascript', 'Webdevelopment', 'Coding', 'Alura', 'Ariven', 'Ruby on Rails', 'Developer'];
 
     const [twittes, setTwittes] = useState()
+    const [user, setUser] = useState()
 
     useEffect(() => {
 
@@ -25,7 +26,9 @@ export default function Home() {
 
 
             .then((res) => {
-                setTwittes(res.data)
+
+                setUser({ name: res.data.name, photo: res.data.photo })
+                setTwittes(res.data.twittes)
             })
             .catch(() => {
 
@@ -35,16 +38,17 @@ export default function Home() {
 
     return (
         <Container>
-            <Menu />
+            <Menu
 
-            <div className="timeLine">
+            />
+
+            <div className="timeLine" >
 
                 <p className="title">TimeLine</p>
 
-                <CreatePost>
+                <CreatePost data-test="publish-box">
 
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
-
+                    <img src={user && user.photo} alt="" />
                     <InputPost />
 
                 </CreatePost>
