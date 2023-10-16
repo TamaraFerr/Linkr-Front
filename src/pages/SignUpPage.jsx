@@ -4,8 +4,6 @@ import LinkrLogo from "../Components/Linkr"
 import { useState } from "react"
 import axios from "axios"
 import { PagesContainer, LogoContainer, SignContainer, FormSign } from "./SignInPage"
-import dotenv from "dotenv";
-//dotenv.config();
 
 
 const URL = 'http://localhost:5000';
@@ -49,7 +47,7 @@ export default function SignUpPage() {
         <FormSign>
           <form onSubmit={signUp}>
             <input placeholder="e-mail" value={email} type="text" onChange={e => setEmail(e.target.value)} />
-            <input placeholder="password" value={email} type="password" onChange={e => setPassword(e.target.value)} />
+            <input placeholder="password" value={password} type="password" onChange={e => setPassword(e.target.value)} />
             <input placeholder="username" value={username} type="text" onChange={e => setUsername(e.target.value)} />
             <input placeholder="picture url" value={pictureUrl} type="text" onChange={e => setPictureUrl(e.target.value)} />
             <button>Sign up</button>

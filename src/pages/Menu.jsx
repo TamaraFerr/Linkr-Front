@@ -1,15 +1,21 @@
 import { useState } from "react"
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Menu() {
 
     const [status, setStatus] = useState("disabled")
+    const navigate = useNavigate();
 
     function Logout(i) {
-
-        i === 1 ? setStatus("click") : setStatus("disabled")
-
+        if (i === 3) { 
+            localStorage.removeItem("Token");
+            navigate("/");
+        }
+        else {
+         i === 1 ? setStatus("click") : setStatus("disabled")
+        }
     }
     if (status === "disabled") {
         return (
@@ -33,7 +39,7 @@ export default function Menu() {
                     <ion-icon onClick={() => Logout(2)} name="chevron-up-outline"></ion-icon>
                     <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
                 </div>
-                <button> Logout</button>
+                <button onClick={() => Logout(3)}> Logout</button>
             </Container>
         )
     }
