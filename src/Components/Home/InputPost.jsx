@@ -9,7 +9,7 @@ export default function InputPost() {
     const [form, setForm] = useState({ url: "", description: "" })
     const navigate = useNavigate()
 
-    const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
+    const token = localStorage.getItem("Token");
 
     function createPost(e) {
         e.preventDefault()
@@ -46,7 +46,6 @@ export default function InputPost() {
                     type="text"
                     value={form.description}
                     onChange={(e) => setForm({ ...form, description: e.target.value })}
-                    required
                     className="text"
                 />
                 <button type="submit">Publish</button>
