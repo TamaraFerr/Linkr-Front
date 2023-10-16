@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import InputPost from "../Components/Home/InputPost";
 import Twittes from "../Components/Home/Twittes";
 import Menu from "./Menu";
 import Hashtags from "../Components/Home/Hashtags";

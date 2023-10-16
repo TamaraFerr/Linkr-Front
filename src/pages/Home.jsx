@@ -1,14 +1,16 @@
 import styled from "styled-components"
 import Menu from "./Menu.jsx"
 import InputPost from "../Components/Home/InputPost.jsx"
-//import { useEffect, useState } from "react"
-//import axios from "axios"
+// import { useEffect, useState } from "react"
+// import axios from "axios"
 import Twittes from "../Components/Home/Twittes.jsx"
 import Hastags from "../Components/Home/Hashtags.jsx"
 
 export default function Home() {
+    //lista de hashtags pra servir de exemplo até eu fazer a lista no banco de dados
+    const hashtags = ['React', 'Javascript', 'Webdevelopment', 'Coding', 'Alura', 'Ariven', 'Ruby on Rails', 'Developer'];
 
-    //const [twittes, setTwittes] = useState()
+    // const [twittes, setTwittes] = useState()
 
     // useEffect(() => {
 
@@ -47,7 +49,7 @@ export default function Home() {
 
             </div>
 
-            <Hastags />
+            <Hastags hashtags={hashtags}/>
 
         </Container>
     )
@@ -98,4 +100,3 @@ const CreatePost = styled.div`
 
    
 `
-

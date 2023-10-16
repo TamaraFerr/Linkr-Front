@@ -4,9 +4,6 @@ import LinkrLogo from "../Components/Linkr"
 import { useState } from "react"
 import axios from "axios"
 import { PagesContainer, LogoContainer, SignContainer, FormSign } from "./SignInPage"
-import dotenv from "dotenv";
-//dotenv.config();
-
 
 const URL = 'http://localhost:5000';
 
@@ -19,12 +16,12 @@ export default function SignUpPage() {
   const navigate = useNavigate();
     
   function returnHome() {
-      navigate("/");
+    navigate("/");
   }
 
   function signUpError(answer) {
-      if (answer.request.status == 409) alert("Esse email já foi cadastrado") 
-      else alert(answer.message);
+    if (answer.request.status == 409) alert("Esse email já foi cadastrado") 
+    else alert(answer.message);
   }
 
   function signUp(event) {
@@ -64,10 +61,10 @@ export default function SignUpPage() {
   )
 }
 
-const SingUpContainer = styled.section`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+// const SingUpContainer = styled.section`
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// `
