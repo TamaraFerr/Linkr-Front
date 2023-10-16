@@ -9,6 +9,7 @@ export default function InputPost() {
     const [form, setForm] = useState({ url: "", description: "" })
     const navigate = useNavigate()
 
+    const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
 
     function createPost(e) {
         e.preventDefault()
@@ -16,18 +17,18 @@ export default function InputPost() {
 
         const config = {
             headers: {
-                Authorization: `Bearer ${"d86b3d0f-3cc1-4c3b-86e2-87832c4ec416"}`
+                Authorization: `Bearer ${token}`
             }
         }
 
-        axios.post(`${import.meta.env.REACT_APP_API_URL}/timeline`, config, form)
+        axios.post(`${process.env.REACT_APP_API_URL}/timeline`, form, config)
             .then(() => {
 
-                navigate("/home")
+                navigate("/timeline")
             })
             .catch((err) => {
 
-                alert(err.message)
+                alert("Houve um erro ao publicar seu link")
             })
     }
     return (
@@ -92,7 +93,7 @@ const Container = styled.div`
     }
 
     button{
-        
+        display: block;
         width: 112px;
         height: 31px;
 

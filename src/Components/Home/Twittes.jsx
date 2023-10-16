@@ -1,9 +1,10 @@
 import styled from "styled-components"
 
 
-export default function Twittes() {
+export default function Twittes({ link, description }) {
 
-      //embeded link, embeded bookmark,custom embeded link
+   
+    //embeded link, embeded bookmark,custom embeded link
     return (
         <CardTwitte>
             <div className="likeCount">
@@ -12,13 +13,10 @@ export default function Twittes() {
             </div>
             <div className="text">
                 <h1>Juvenal Juvenico</h1>
-                <p>Muito maneiro esse tutorial de Material UI com React, deem uma olhada!</p>
+                <p>{description}</p>
 
                 <CardUrl>
-                <p>
-                <a href="https://www.driven.com.br/"></a>
-          
-                </p>
+                    <p><a href={link}>{link}</a></p>
                 </CardUrl>
             </div>
         </CardTwitte>

@@ -1,32 +1,34 @@
 import styled from "styled-components"
 import Menu from "./Menu.jsx"
 import InputPost from "../Components/Home/InputPost.jsx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Twittes from "../Components/Home/Twittes.jsx"
+import Hastags from "../Components/Home/Hashtags.jsx"
+import axios from "axios"
 
 export default function Home() {
 
-    //const [twittes, setTwittes] = useState()
+    const [twittes, setTwittes] = useState()
 
     useEffect(() => {
 
-        /* 
-     const config = {
-         headers: {
-             Authorization: `Bearer ${token.token}`
-         }
-     } 
+        const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
 
-        axios.get(`${import.meta.env.REACT_APP_API_URL}/timeline`)
+        axios.get(`${process.env.REACT_APP_API_URL}/timeline`, config)
+
 
             .then((res) => {
                 setTwittes(res.data)
             })
             .catch((err) => {
 
-                alert(err.message)
+                alert("An error occured while trying to fetch the posts, please refresh the page")
             })
-            */
     }, [])
 
     return (
@@ -38,13 +40,24 @@ export default function Home() {
                 <p className="title">TimeLine</p>
 
                 <CreatePost>
+
                     <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
+
                     <InputPost />
+
                 </CreatePost>
 
-                <Twittes />
+                {twittes && twittes.map((tw) =>
+                    <Twittes
+                        link={tw.link}
+                        description={tw.description}
+                    />
+                )}
+
 
             </div>
+
+            <Hastags />
 
         </Container>
     )
@@ -59,6 +72,7 @@ const Container = styled.div`
         width: 611px;
         position: relative;
         top: 140px;
+        margin-right: 25px;
     }
 
     .title{
