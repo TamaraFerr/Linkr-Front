@@ -1,36 +1,37 @@
 import styled from "styled-components"
 import Menu from "./Menu.jsx"
 import InputPost from "../Components/Home/InputPost.jsx"
-// import { useEffect, useState } from "react"
-// import axios from "axios"
+import { useEffect, useState } from "react"
 import Twittes from "../Components/Home/Twittes.jsx"
 import Hastags from "../Components/Home/Hashtags.jsx"
+import axios from "axios"
 
 export default function Home() {
     //lista de hashtags pra servir de exemplo até eu fazer a lista no banco de dados
     const hashtags = ['React', 'Javascript', 'Webdevelopment', 'Coding', 'Alura', 'Ariven', 'Ruby on Rails', 'Developer'];
 
-    // const [twittes, setTwittes] = useState()
+    const [twittes, setTwittes] = useState()
 
-    // useEffect(() => {
+    useEffect(() => {
 
-        
-    //  const config = {
-    //      headers: {
-    //          Authorization: `Bearer ${token.token}`
-    //      }
-    //  } 
+        const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
 
-    //     axios.get(`${import.meta.env.VITE_API_URL}/timeline`)
+        axios.get(`${process.env.REACT_APP_API_URL}/timeline`, config)
 
-    //         .then((res) => {
-    //             setTwittes(res.data)
-    //         })
-    //         .catch((err) => {
 
-    //             alert(err.message)
-    //         })
-    // }, [])
+            .then((res) => {
+                setTwittes(res.data)
+            })
+            .catch(() => {
+
+                alert("An error occured while trying to fetch the posts, please refresh the page")
+            })
+    }, [])
 
     return (
         <Container>
@@ -41,15 +42,28 @@ export default function Home() {
                 <p className="title">TimeLine</p>
 
                 <CreatePost>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
+
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
+
                     <InputPost />
+
                 </CreatePost>
 
-                <Twittes />
+                {twittes && twittes.map((tw) =>
+                    <Twittes
+                        id={tw.id}
+                        name={tw.username}
+                        photo={tw.photo}
+                        link={tw.link}
+                        description={tw.description}
+                        likes={tw.likes}
+                    />
+                )}
+
 
             </div>
 
-            <Hastags hashtags={hashtags}/>
+            <Hastags hashtags={hashtags} />
 
         </Container>
     )
@@ -81,7 +95,7 @@ const CreatePost = styled.div`
     display: flex;
 
     width: 611px;
-    height: 209px;
+    height: 230px;
 
     border-radius: 16px;
 

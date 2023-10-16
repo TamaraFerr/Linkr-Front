@@ -1,30 +1,43 @@
-import { useState } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom"
+
 
 
 export default function Menu() {
 
     const [status, setStatus] = useState("disabled")
-    const navigate = useNavigate();
+    const [form, setForm] = useState({ search: "" })
+    const [user, setUser] = useState()
+    const navigate = useNavigate()
+
 
     function Logout(i) {
-        if (i === 3) { 
+        if (i === 3) {
             localStorage.removeItem("Token");
             navigate("/");
         }
         else {
-         i === 1 ? setStatus("click") : setStatus("disabled")
+            i === 1 ? setStatus("click") : setStatus("disabled")
         }
     }
     if (status === "disabled") {
         return (
             <Container>
-                <p>Linkr</p>
-
-                <div>
+                <p onClick={() => navigate("/timeline")}>Linkr</p>
+                <form>
+                    <input
+                        placeholder="   Search for people"
+                        type="text"
+                        value={form.search}
+                        onChange={(e) => setForm({ ...form, search: e.target.value })}
+                        required
+                    />
+                </form>
+                <div className="textImage">
                     <ion-icon onClick={() => Logout(1)} name="chevron-down-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                 </div>
 
             </Container>
@@ -33,12 +46,24 @@ export default function Menu() {
 
         return (
             <Container>
-                <p>Linkr</p>
 
-                <div>
-                    <ion-icon onClick={() => Logout(2)} name="chevron-up-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt=""/>
+                <p onClick={() => navigate("/timeline")}>Linkr</p>
+
+                <form>
+                    <input
+                        placeholder="   Search for people"
+                        type="text"
+                        value={form.search}
+                        onChange={(e) => setForm({ ...form, serch: e.target.value })}
+                        required
+                    />
+                </form>
+
+                <div className="textImage">
+                    <ion-icon onClick={() => Logout()} name="chevron-up-outline"></ion-icon>
+                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                 </div>
+
                 <button onClick={() => Logout(3)}> Logout</button>
             </Container>
         )
@@ -91,6 +116,7 @@ const Container = styled.div`
     }
 
     button{
+
         position: fixed;
         top: 72px;
         right: 0px;
@@ -109,8 +135,28 @@ const Container = styled.div`
         font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.05em;
-        
+    }
 
+    input{
+        display: flex;
+        width: 543px;
+        height: 15px;
+        border-radius: 8px;
+
+        border: 1px solid #FFFFFF;
+        background-color: #FFFFFF;
+
+        font-family: Lato;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 23px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
+    .textImage{
+        display: flex;
     }
 
 `

@@ -9,6 +9,7 @@ export default function InputPost() {
     const [form, setForm] = useState({ url: "", description: "" })
     const navigate = useNavigate()
 
+    const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
 
     function createPost(e) {
         e.preventDefault()
@@ -16,18 +17,18 @@ export default function InputPost() {
 
         const config = {
             headers: {
-                Authorization: `Bearer ${"d86b3d0f-3cc1-4c3b-86e2-87832c4ec416"}`
+                Authorization: `Bearer ${token}`
             }
         }
 
-        axios.post(`${import.meta.env.VITE_API_URL}/timeline`, form)
+        axios.post(`${process.env.REACT_APP_API_URL}/timeline`, form, config)
             .then(() => {
 
-                navigate("/home")
+                navigate("/timeline")
             })
             .catch((err) => {
 
-                alert(err.message)
+                alert("Houve um erro ao publicar seu link")
             })
     }
     return (
@@ -58,14 +59,13 @@ export default function InputPost() {
 const Container = styled.div`
     margin-left: 15px;
 
+
     input{
-
-        width: 502px;
-        height: 30px;
+        width: 450px;
+        height: 5px;
         border-radius: 5px;
-
-        margin: 3px;
         
+        margin-right: 35px;
         background-color: #EFEFEF;
         border: #EFEFEF;
     }
@@ -84,24 +84,32 @@ const Container = styled.div`
     }
 
     .text{
-        
-        height: 66px;
+        margin-top: -10px;
+        height: 60px;
     }
 
     button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         width: 112px;
         height: 31px;
+        
         border-radius: 5px;
         background-color: #1877F2;
         border: 1px solid  #1877F2;
+
         color: #FFFFFF;
         font-family: 'Lato', sans-serif;
         font-size: 14px;
         font-weight: 700;
         line-height: 17px;
         letter-spacing: 0em;
+
         text-align: center;
         position: relative;
-        left: 395px;
+        left: 165px;
+        bottom:6px;
     }   
 `

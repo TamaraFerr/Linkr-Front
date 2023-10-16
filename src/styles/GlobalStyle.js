@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
         color: white;
     }
 
+
     h3 {
         margin-top: 20px;
         display: flex;
@@ -62,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         padding-top: 30px;
     }
+
 `
 
 export default GlobalStyle
