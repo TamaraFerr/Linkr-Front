@@ -46,8 +46,8 @@ export default function InputPost() {
                     value={form.description}
                     onChange={(e) => setForm({ ...form, description: e.target.value })}
                     required
-                    className="text" />
-
+                    className="text"
+                />
                 <button type="submit">Publish</button>
             </form>
 
@@ -56,10 +56,7 @@ export default function InputPost() {
 }
 
 const Container = styled.div`
-
     margin-left: 15px;
-    
-   
 
     input{
 
@@ -92,23 +89,18 @@ const Container = styled.div`
     }
 
     button{
-        
         width: 112px;
         height: 31px;
-
         border-radius: 5px;
-
         background-color: #1877F2;
         border: 1px solid  #1877F2;
         color: #FFFFFF;
-
         font-family: 'Lato', sans-serif;
         font-size: 14px;
         font-weight: 700;
         line-height: 17px;
         letter-spacing: 0em;
         text-align: center;
-
         position: relative;
         left: 395px;
     }   

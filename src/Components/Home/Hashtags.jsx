@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
-export default function Hashtags(){
+export default function Hashtags({hashtags}){
+    // function handleClick(){
+    //     e.preventDefault()
+    // }
+
     return(
         <Container>
             <Trending>trending</Trending>
-            <Hashtag># Hashtag</Hashtag>
-            <Hashtag># Hashtag</Hashtag>
-            <Hashtag># Hashtag</Hashtag>
-            <Hashtag># Hashtag</Hashtag>
-            <Hashtag># Hashtag</Hashtag>
-            <Hashtag># Hashtag</Hashtag>
+            <Hashtag>
+                {hashtags.map((hashtag, index) => (
+                    <HashtagsList key={index}># {hashtag}</HashtagsList>
+                ))}
+            </Hashtag>
         </Container>
     )
 }
@@ -37,7 +40,7 @@ const Trending = styled.h1`
     padding-bottom: 20px;
 `
 
-const Hashtag = styled.h2`
+const Hashtag = styled.ul`
     font-family: "Lato", sans-serif;
     font-weight: 700;
     font-size: 19px;
@@ -45,4 +48,7 @@ const Hashtag = styled.h2`
     box-sizing: border-box;
     padding-left: 20px;
     padding-top: 20px;
+`
+const HashtagsList = styled.li`
+    margin-bottom: 10px;
 `
