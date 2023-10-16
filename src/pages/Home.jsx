@@ -14,13 +14,14 @@ export default function Home() {
 
     useEffect(() => {
 
-        const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
+        const token = localStorage.getItem("Token");
+        console.log("Token dentro de home: "+token);
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }
-
+        console.log("Config dentro de home: "+config);
         axios.get(`${process.env.REACT_APP_API_URL}/timeline`, config)
 
 
@@ -114,3 +115,4 @@ const CreatePost = styled.div`
 
    
 `
+// test

@@ -11,11 +11,12 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   function signInSuccess(answer) {
-    localStorage.setItem("Token", answer.data);
-    console.log("Signin Token: "+answer.data);
-    navigate("/home");
+    localStorage.setItem("Token", answer.data.token);
+    console.log("Token é: "+answer.data.token);
+    navigate("/timeline");
   }
 
   function signInError(answer) {
@@ -25,6 +26,7 @@ export default function SignInPage() {
   function signIn(event) {
     if (!password && !email) alert("Preencha todos os campos para entrar");
     else {
+       setLoading(true);
         event.preventDefault();
           const data = {
             email: email,
@@ -33,6 +35,7 @@ export default function SignInPage() {
         const query = axios.post(URL+'/signin', data);
         query.then(signInSuccess); 
         query.catch(signInError);
+        query.finally(setLoading(false));
     }
   } 
 
@@ -48,7 +51,7 @@ export default function SignInPage() {
 
           <input data-test="email" placeholder="e-mail" type="email" value={email} onChange={e => setEmail(e.target.value)}/>
           <input data-test="password" placeholder="password" type="password" autoComplete="new-password" value={password} onChange={e => setPassword(e.target.value)} />
-          <button data-test="sign-in-submit" >Log in</button>
+          <button data-test="sign-in-submit" disabled={loading}>Log in</button>
         </form>
 
         <Link to="/signup">

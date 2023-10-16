@@ -13,18 +13,15 @@ export default function SignUpPage() {
 	const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [pictureUrl, setPictureUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
     
   function returnHome() {
     navigate("/");
   }
 
-  function signUpError(answer) {
-    if (answer.request.status == 409) alert("Esse email já foi cadastrado") 
-    else alert(answer.message);
-  }
-
   function signUp(event) {
+        setLoading(true);
         event.preventDefault();
           const data = {
             email: email,
@@ -34,7 +31,8 @@ export default function SignUpPage() {
         };
         const query = axios.post(URL+'/signup', data);
         query.then(returnHome); 
-        query.catch(signUpError);
+        query.catch(err => alert(err.response.request.responseText));
+        query.finally(setLoading(false));
   } 
 
   return (
@@ -49,7 +47,7 @@ export default function SignUpPage() {
             <input placeholder="password" value={password} type="password" onChange={e => setPassword(e.target.value)} />
             <input placeholder="username" value={username} type="text" onChange={e => setUsername(e.target.value)} />
             <input placeholder="picture url" value={pictureUrl} type="text" onChange={e => setPictureUrl(e.target.value)} />
-            <button>Sign up</button>
+            <button disabled={loading}>Sign up</button>
           </form>
 
           <Link to="/">
@@ -68,3 +66,5 @@ export default function SignUpPage() {
 //   justify-content: center;
 //   align-items: center;
 // `
+
+//Test
