@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 
+
 export default function Menu() {
 
     const [status, setStatus] = useState("disabled")
@@ -13,9 +14,13 @@ export default function Menu() {
 
 
     function Logout(i) {
-
-        i === 1 ? setStatus("click") : setStatus("disabled")
-
+        if (i === 3) {
+            localStorage.removeItem("Token");
+            navigate("/");
+        }
+        else {
+            i === 1 ? setStatus("click") : setStatus("disabled")
+        }
     }
     if (status === "disabled") {
         return (
@@ -30,7 +35,7 @@ export default function Menu() {
                         required
                     />
                 </form>
-                <div>
+                <div className="textImage">
                     <ion-icon onClick={() => Logout(1)} name="chevron-down-outline"></ion-icon>
                     <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                 </div>
@@ -54,11 +59,12 @@ export default function Menu() {
                     />
                 </form>
 
-                <div>
+                <div className="textImage">
                     <ion-icon onClick={() => Logout()} name="chevron-up-outline"></ion-icon>
                     <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
                 </div>
-                <button> Logout</button>
+
+                <button onClick={() => Logout(3)}> Logout</button>
             </Container>
         )
     }
@@ -110,6 +116,7 @@ const Container = styled.div`
     }
 
     button{
+
         position: fixed;
         top: 72px;
         right: 0px;
@@ -131,8 +138,9 @@ const Container = styled.div`
     }
 
     input{
-        width: 563px;
-        height: 45px;
+        display: flex;
+        width: 543px;
+        height: 15px;
         border-radius: 8px;
 
         border: 1px solid #FFFFFF;
@@ -145,6 +153,10 @@ const Container = styled.div`
         letter-spacing: 0em;
         text-align: left;
 
+    }
+
+    .textImage{
+        display: flex;
     }
 
 `

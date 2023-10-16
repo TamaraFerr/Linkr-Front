@@ -7,6 +7,8 @@ import Hastags from "../Components/Home/Hashtags.jsx"
 import axios from "axios"
 
 export default function Home() {
+    //lista de hashtags pra servir de exemplo até eu fazer a lista no banco de dados
+    const hashtags = ['React', 'Javascript', 'Webdevelopment', 'Coding', 'Alura', 'Ariven', 'Ruby on Rails', 'Developer'];
 
     const [twittes, setTwittes] = useState()
 
@@ -25,7 +27,7 @@ export default function Home() {
             .then((res) => {
                 setTwittes(res.data)
             })
-            .catch((err) => {
+            .catch(() => {
 
                 alert("An error occured while trying to fetch the posts, please refresh the page")
             })
@@ -49,15 +51,19 @@ export default function Home() {
 
                 {twittes && twittes.map((tw) =>
                     <Twittes
+                        id={tw.id}
+                        name={tw.username}
+                        photo={tw.photo}
                         link={tw.link}
                         description={tw.description}
+                        likes={tw.likes}
                     />
                 )}
 
 
             </div>
 
-            <Hastags />
+            <Hastags hashtags={hashtags} />
 
         </Container>
     )
@@ -89,7 +95,7 @@ const CreatePost = styled.div`
     display: flex;
 
     width: 611px;
-    height: 209px;
+    height: 230px;
 
     border-radius: 16px;
 
@@ -108,4 +114,3 @@ const CreatePost = styled.div`
 
    
 `
-

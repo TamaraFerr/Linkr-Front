@@ -4,6 +4,8 @@ import UserContext from "./contexts/UserContext";
 import Home from "./pages/Home";
 import Hashtag from "./pages/Hashtag";
 import UserPosts from "./pages/User";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 export default function App() {
 
@@ -16,6 +18,9 @@ export default function App() {
           <Route path="/" element={""} />
           <Route path="/signup" element={""} />
           <Route path="/timeline" element={<Home />} />
+          <Route path="/" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/hashtag:hashtag" element={<Hashtag />} />
           <Route path="/user/:id" element={<UserPosts />} />
         </Routes>

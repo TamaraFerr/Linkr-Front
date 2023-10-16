@@ -1,26 +1,66 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 
-export default function Twittes({ link, description }) {
+export default function Twittes({ name, photo, link, description, likes }) {
 
-   
+    const [status, setStatus] = useState("desliked")
+    console.log(status)
     //embeded link, embeded bookmark,custom embeded link
-    return (
-        <CardTwitte>
-            <div className="likeCount">
-                <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
-                <ion-icon name="heart-outline"></ion-icon>
-            </div>
-            <div className="text">
-                <h1>Juvenal Juvenico</h1>
-                <p>{description}</p>
 
-                <CardUrl>
-                    <p><a href={link}>{link}</a></p>
-                </CardUrl>
-            </div>
-        </CardTwitte>
-    )
+    function click(i) {
+
+
+        (i === 1) ? setStatus("desliked") : setStatus("like")
+
+    }
+
+    if (status === "desliked") {
+        return (
+            <CardTwitte>
+                <div className="likeCount">
+                    <img src={photo} alt="" />
+
+                    <ion-icon
+                        name="heart-outline"
+                        onClick={() => click()}
+                        status={status ? "desliked" : "like"}>
+                    </ion-icon>
+                    <p className="likes" >{likes} likes</p>
+                </div>
+
+                <div className="text">
+                    <h1>{name}</h1>
+                    <p>{description}</p>
+
+                    <CardUrl>
+                        <p><a href={link} target="_blank">{link}</a></p>
+                    </CardUrl>
+                </div>
+            </CardTwitte>
+        )
+    } else {
+        return (
+            <CardTwitte>
+                <div className="likeCount">
+                    <img src={photo} alt="" />
+
+                    <ion-icon name="heart" onClick={() => click(1)} status={status ? "desliked" : "like"}></ion-icon>
+                    <p className="likes" >{likes} likes</p>
+                </div>
+
+                <div className="text">
+                    <h1>{name}</h1>
+                    <p>{description}</p>
+
+                    <CardUrl>
+                        <p><a href={link}>{link}</a></p>
+                        <img src={link} alt="image link" />
+                    </CardUrl>
+                </div>
+            </CardTwitte>
+        )
+    }
 }
 
 const CardTwitte = styled.div`
@@ -83,7 +123,14 @@ const CardTwitte = styled.div`
             
             margin-top: 15px;
             margin-left: 25px;
+
+            color:${props => props.status === "desliked" ? "#FFFFFF" : "#AC0000"};
+            
         }
+    }
+
+    .likes{
+        margin-left: 15px;
     }
 `
 
