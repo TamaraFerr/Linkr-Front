@@ -5,8 +5,6 @@ import styled from "styled-components"
 export default function Twittes({ name, photo, link, description, likes }) {
 
     const [status, setStatus] = useState("desliked")
-    console.log(status)
-    //embeded link, embeded bookmark,custom embeded link
 
     function click(i) {
 
@@ -17,7 +15,7 @@ export default function Twittes({ name, photo, link, description, likes }) {
 
     if (status === "desliked") {
         return (
-            <CardTwitte>
+            <CardTwitte data-test="post">
                 <div className="likeCount">
                     <img src={photo} alt="" />
 
@@ -30,10 +28,10 @@ export default function Twittes({ name, photo, link, description, likes }) {
                 </div>
 
                 <div className="text">
-                    <h1>{name}</h1>
-                    <p>{description}</p>
+                    <h1 data-test="username">{name}</h1>
+                    <p data-test="description">{description}</p>
 
-                    <CardUrl>
+                    <CardUrl data-test="link">
                         <p><a href={link} target="_blank">{link}</a></p>
                     </CardUrl>
                 </div>

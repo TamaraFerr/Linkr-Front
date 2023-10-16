@@ -13,6 +13,29 @@ export default function Menu() {
     const navigate = useNavigate()
 
 
+    useEffect(() => {
+
+        const token = "fff843d4-e2c6-4e3d-9cb0-81ee644e23d5"
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        axios.get(`${process.env.REACT_APP_API_URL}/timeline`, config)
+
+
+            .then((res) => {
+
+                setUser(res.data.photo)
+
+            })
+            .catch(() => {
+
+                alert("An error occured while trying to fetch the posts, please refresh the page")
+            })
+    }, [])
+
     function Logout(i) {
         if (i === 3) {
             localStorage.removeItem("Token");
@@ -37,7 +60,7 @@ export default function Menu() {
                 </form>
                 <div className="textImage">
                     <ion-icon onClick={() => Logout(1)} name="chevron-down-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
+                    <img src={user} alt="" />
                 </div>
 
             </Container>
@@ -61,7 +84,7 @@ export default function Menu() {
 
                 <div className="textImage">
                     <ion-icon onClick={() => Logout()} name="chevron-up-outline"></ion-icon>
-                    <img src="https://i.pinimg.com/originals/7b/f4/f8/7bf4f8f11c22478d098c089c5d386cc7.jpg" alt="" />
+                    <img src={user} alt="" />
                 </div>
 
                 <button onClick={() => Logout(3)}> Logout</button>
